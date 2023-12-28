@@ -1,11 +1,9 @@
 #Mass Spectrum Plotting
 #This is the file to plot mass spectra from atom probe codes
 
-#import packages
-import csv #to read csv files
-import pandas as pd
 import matplotlib.pyplot as plt
-
+# import packages
+import pandas as pd
 
 csvfilepath = "/Users/bart924/OneDrive - PNNL/Desktop/110121/R31_17898_Mass_Spec_bin1E-2.csv"
 

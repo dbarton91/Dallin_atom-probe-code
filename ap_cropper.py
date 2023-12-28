@@ -16,7 +16,8 @@ os.getcwd()
 
 def ap_cropper(pathfile): #string. confirm the directory
     name = pathfile
-    savename = "cropped" + name
+    file_name_without_extension = os.path.splitext(name)[0]
+    savename = file_name_without_extension + "_cropped.png"
     img = np.array(Image.open(name))
     #Get the length of pixels of the rectange
     shape = img.shape[1]
@@ -49,9 +50,9 @@ def ap_cropper(pathfile): #string. confirm the directory
     bottom = shapex-bottom
     bottom = bottom +5
     #Count from the left
-    for righta in range(shapex):
+    for a in range(shapex):
         o=0
-        while img[righta,o][0] == 255 and o < shape-10:
+        while img[a,o][0] == 255 and o < shape-10:
             o = o+1
         if o < left:
             left = o
@@ -72,8 +73,15 @@ def ap_cropper(pathfile): #string. confirm the directory
     
     return
 
-ap_cropper("Fe_box.PNG")
-ap_cropper("H_box.PNG")
-ap_cropper("H2_box.PNG")
+image_directory = "X:\\Experimental_results\\APT\\NETL\\DT2\\liftout2\\R5115_00474\\tobecropped"
+
+for filename in os.listdir(image_directory):
+    if filename.endswith(".PNG") or filename.endswith(".png"):
+        file_path = os.path.join(image_directory, filename)
+        ap_cropper(file_path)
+
+# ap_cropper("Fe_box.PNG")
+# ap_cropper("H_box.PNG")
+# ap_cropper("H2_box.PNG")
 
 
